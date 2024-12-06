@@ -8,8 +8,13 @@ type User {
     email: String!
 }
 
-input InputUser{
+input SignUpUser{
     name: String!
+    email: String!
+    password: String!
+}
+
+input LoginData{
     email: String!
     password: String!
 }
@@ -20,7 +25,9 @@ type Query {
 }
 
 type Mutation {
-  registerUser(registerData: InputUser!): User
+  signUp(registerData: SignUpUser!): User!
+  logIn(LoginData: LoginData!): User!
+
 }
 
 `
