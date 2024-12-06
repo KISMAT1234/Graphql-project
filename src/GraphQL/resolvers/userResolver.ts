@@ -9,13 +9,19 @@ const userResolver = {
       getAllUser: async(_:any, __:any, id:any):Promise<any> => {
         return await UserService.getAllUserData();
       },
+
+      logIn: async(_:any, __:any, id:any):Promise<any> => {
+        return await UserService.getUserById(id);
+      }
     },
 
     Mutation: {
-      registerUser: async (_:any,__:any, { registerData }:any) => {
+      signUp: async (_:any, { registerData }:any) => {
         console.log(registerData,'registration data')
-         return await UserService.registerUser(registerData)
+        console.log(registerData.email,'email')
+        return await UserService.registerUser(registerData)
       }
-  }
+
+   }
 }
 export default userResolver
