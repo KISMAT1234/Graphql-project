@@ -4,6 +4,10 @@ import User from "../Models/User";
 export class UserService {
 
     static async registerUser(data:any){
+        console.log(data,'data here')
+        const newUser = await User.create(data);
+        console.log(newUser,'after save')
+        return newUser;
          
     }
     static async getUserById(id:number) {
@@ -29,5 +33,7 @@ export class UserService {
             throw new UserInputError('Error fetching user by ID');
         }
     }
+
+
 
 }
