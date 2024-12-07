@@ -19,6 +19,11 @@ input LoginData{
     password: String!
 }
 
+type LogIn{
+    userDetails: User!
+    message:String!  
+}
+
 type Query {
   getUser(id: ID!): User!
   getAllUser: [User!]!
@@ -26,7 +31,7 @@ type Query {
 
 type Mutation {
   signUp(registerData: SignUpUser!): User!
-  logIn(LoginData: LoginData!): User!
+  logIn(LoginData: LoginData!): LogIn!
 
 }
 
