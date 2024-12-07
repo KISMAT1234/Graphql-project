@@ -1,7 +1,7 @@
 const path = require('path');
 
 module.exports = {
-  'config': path.resolve('src', 'Database', 'dbConfig.js'),
+  'config': path.resolve('src', 'Database', 'dbCon.js'),
   'models-path': path.resolve('src', 'models'), // Specify TS models directory
   'seeders-path': path.resolve('src', 'seeders'), // Specify TS seeders directory
   'migrations-path': path.resolve('src', 'migrations'), // Specify TS migrations directory
