@@ -12,6 +12,7 @@ interface DoctorAttributes {
   speciality: string;
   education: string;
   address: string;
+  image: string;
 }
 
 // Define the creation attributes (attributes that are optional during creation)
@@ -28,6 +29,7 @@ class Doctor extends Model<DoctorAttributes, DoctorCreationAttributes> implement
   speciality!: string;
   education!: string;
   address!: string;
+  image!: string;
 
   static associate(models: any) {
     // define association here
@@ -71,6 +73,10 @@ Doctor.init(
     address: {
       type: DataTypes.STRING,
       allowNull: true,
+    },
+    image: {
+      type: DataTypes.STRING, // This can store the URL or file path of the image
+      allowNull: true, // image can be optional
     },
   },
   {
