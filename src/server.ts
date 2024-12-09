@@ -42,14 +42,6 @@ async function startApolloServer() {
 
 startApolloServer();
 
-sequelize
-  .authenticate()
-  .then(() => {
-    console.log('Database connection successful!!');
-  })
-  .catch((err) => {
-    console.error('Unable to connect to the database:', err);
-  });
 
 
 
