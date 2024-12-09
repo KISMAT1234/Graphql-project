@@ -24,13 +24,16 @@ export class UserService {
 
     static async getAllUserData() {
         try{
-            console.log("Inside all data")
+            console.log("Inside all data siuuuu")
             const oneUserData = await User.findAll();
             console.log(oneUserData,'all user data')
-            return oneUserData;
+            return {
+                message: 'Login successful',
+                userDetails: oneUserData            
+            };
         }catch (error){
-            console.error(error,'error in signup');
-            throw new UserInputError('Error fetching user by ID');
+            console.error(error,'error in server');
+            throw new UserInputError('Error in backend');
         }
     }
 
