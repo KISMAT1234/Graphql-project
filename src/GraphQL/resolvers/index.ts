@@ -1,3 +1,4 @@
 import userResolver from "./userResolver";
+import doctorResolver from "./doctorResolver";
 
-export {userResolver}
+export {userResolver, doctorResolver} 
