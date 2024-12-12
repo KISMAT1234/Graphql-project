@@ -25,23 +25,23 @@ const Doctor = sequelize.define('Doctor', {
     },
     aboutme: {
         type: DataTypes.TEXT,
-        allowNull: true,
+        allowNull: false,
     },
     speciality: {
         type: DataTypes.STRING,
-        allowNull: true,
+        allowNull: false,
     },
     education: {
         type: DataTypes.STRING,
-        allowNull: true,
+        allowNull: false,
     },
     address: {
         type: DataTypes.STRING,
-        allowNull: true,
+        allowNull: false,
     },
     image: {
         type: DataTypes.STRING, // Store URL or file path of the image
-        allowNull: true, // Optional field
+        allowNull: false, // Optional field
     },
 }, {
     timestamps: true, // Adds createdAt and updatedAt fields

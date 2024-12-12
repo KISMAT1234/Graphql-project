@@ -21,6 +21,7 @@ input LoginData{
 
 type LogIn{
     userDetails: User!
+    success: Boolean!
     message:String!  
 }
 
