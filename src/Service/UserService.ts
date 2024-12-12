@@ -52,7 +52,9 @@ export class UserService {
             if (oneUserData) {
                 return {
                     message: 'Login successful',
-                    userDetails: oneUserData                };
+                    success:true,
+                    userDetails: oneUserData           
+                };
             } else {
                 throw new UserInputError('Please provide correct username and password', {
                     invalidArgs: ['email', 'password'], // Optionally add extra info to help with debugging
