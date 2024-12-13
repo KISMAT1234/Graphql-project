@@ -57,10 +57,23 @@ export class UserService {
                 };
             } else {
                 throw new UserInputError('Please provide correct username and password', {
-                    invalidArgs: ['email', 'password'], // Optionally add extra info to help with debugging
+                    invalidArgs: ['email', 'password'],
                 });
             }
         }catch(error){
+            console.error(error,'error in signup ');
+            if (error instanceof UserInputError) {
+                throw error; 
+            }
+            throw new UserInputError('Error in server');
+        }
+    }
+
+    static async updateUserService(id:number,{data}:any) {
+           try{
+               
+           }
+           catch(error){
             console.error(error,'error in signup ');
             if (error instanceof UserInputError) {
                 throw error; 
