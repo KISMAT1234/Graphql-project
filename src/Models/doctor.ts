@@ -40,12 +40,12 @@ const Doctor = sequelize.define('Doctor', {
         allowNull: false,
     },
     image: {
-        type: DataTypes.STRING, // Store URL or file path of the image
-        allowNull: false, // Optional field
+        type: DataTypes.STRING, 
+        allowNull: false, 
     },
 }, {
-    timestamps: true, // Adds createdAt and updatedAt fields
-    tableName: 'Doctors', // Explicitly define the table name
+    timestamps: true, 
+    tableName: 'Doctors', 
 });
 
 export default Doctor;
