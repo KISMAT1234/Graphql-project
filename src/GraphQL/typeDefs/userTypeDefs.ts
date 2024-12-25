@@ -20,18 +20,24 @@ input LoginData{
 }
 
 type LogIn{
-    userDetails: User!
+    data: User!
     success: Boolean!
     message:String!  
 }
 
+type UsersResponse {
+    data: [User]! 
+    success: Boolean!
+    message: String!
+  }
+
 type Query {
   getUser(id: ID!): User!
-  getAllUser: [User!]!
+  getAllUser: UsersResponse!
 }
 
 type Mutation {
-  signUp(registerData: SignUpUser!): User!
+  signUp(registerData: SignUpUser!): UsersResponse!
   logIn(LoginData: LoginData!): LogIn!
 
 }
