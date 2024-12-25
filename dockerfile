@@ -16,5 +16,8 @@ COPY . .
 # Expose the port your app runs on
 EXPOSE 8000
 
+# Remove the src folder to keep only the production code
+# RUN rm -rf src/
+
 # Start the application
 CMD ["npm", "run", "start"]
