@@ -28,17 +28,17 @@ export const doctorType = gql`
         image:String
     }
 
-
-    type Query {
-        getDoctor(id:ID!):Doctor!
-        getAllDoctor:[Doctor!]!
-    }
-
     type DoctorResponse{
         message:String!
         success:Boolean!
-        doctorDetails:Doctor!
+        data:Doctor!
     }
+
+    type Query {
+        getDoctor(id:ID!):DoctorResponse!
+        getAllDoctor:DoctorResponse!
+    }
+
 
     type Mutation {
         newDoctor(doctorDetails:DoctorDetails!):DoctorResponse
