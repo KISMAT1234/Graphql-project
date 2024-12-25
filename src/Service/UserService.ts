@@ -4,32 +4,55 @@ import User from "../Models/User";
 export class UserService {
 
     static async registerUserService(data:any){
-        console.log(data,'data here')
+        console.log('beforeeeee')
         const newUser = await User.create(data);
-        console.log(newUser,'after save')
-        return newUser;
+        console.log(newUser,'new user')
+        return {
+            message: 'Signup successful',
+            success:true,
+            data: newUser            
+        };
          
     }
     static async getUserById(id:number) {
         try{
-
             const oneUserData = await User.findByPk(id);
+            if(!oneUserData){
+                return {
+                    message: 'Data not found',
+                    success:true,
+                    data: []           
+                };
+            }
             console.log(oneUserData,'one user data')
-            return oneUserData;
+            return {
+                message: 'Data get successful',
+                success:true,
+                data: oneUserData            
+            };
         }catch (error){
-            console.error(error,'error in fetching user id ');
             throw new UserInputError('Error fetching user by ID');
         }
     }
 
     static async getAllUserData() {
         try{
-            console.log("Inside all data siuuuu")
-            const oneUserData = await User.findAll();
-            console.log(oneUserData,'all user data')
+            const oneUserData = await User.findAll({
+                attributes: ['id', 'name', 'email'],
+                raw: true,
+            });
+            console.log(oneUserData,'dataaaaa')
+            if(!oneUserData){
+                return {
+                    message: 'Data not found',
+                    success:true,
+                    data: []           
+                };
+            }
             return {
-                message: 'Login successful',
-                userDetails: oneUserData            
+                message: 'Data get successful',
+                success:true,
+                data: oneUserData            
             };
         }catch (error){
             console.error(error,'error in server');
@@ -53,7 +76,7 @@ export class UserService {
                 return {
                     message: 'Login successful',
                     success:true,
-                    userDetails: oneUserData           
+                    data: oneUserData           
                 };
             } else {
                 throw new UserInputError('Please provide correct username and password', {
