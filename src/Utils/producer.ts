@@ -1,25 +1,32 @@
 const amqp = require('amqplib');
 
-async function sendMail() {
-    try {
-       const connection = await amqp.connect('amqp://localhost');
-       const channel = await connection.createChannel();
-       const exchange = "main_exchange";
-       const routingKey = "send_mail";
-       const message = "Hello World!";
+async function Practise() {
+    try  {
+        await amqp.connect('amqp://localhost', function(err, connection) {
+            console.log('first')
+          if(err) {
+            console.log('error in connection')
+            throw err;
+          }
 
-       await channel.assertExchange(exchange, "direct", {durable: false})
-       await channel.assertQueue("mail_queue", {durable: false})
+          connection.createCHannel(function(err, channel){
+            console.log('second')
+                if(err) { 
+                    throw err;
+                }
 
-       await channel.bindQueue("mail_queue", exchange, routingKey)
-
-       channel.publish(exchange, routingKey, Buffer.from(message))
-       console.log(message, 'data')
-
-
-    } catch (error) {
-        console.log(error);
+                channel.assertQueue('notification',{
+                    durable:false
+                })
+                channel.sendToQueue('new_queue', Buffer.from('Hello World!'))
+                console.log('data send to queue')
+                channel.close()
+                connection.close()
+          })
+       })
+    }
+    catch(error) {
+        console.log(error,'error')
     }
 }
-
-sendMail()
+Practise()
