@@ -5,9 +5,9 @@ async function receiveMail() {
           const connection = await amqp.connect("amqp://localhost")
           const channel = await connection.createChannel()
 
-          await channel.assertQueue("mail_queue", {durable:false})
-          channel.consume("mail_queue", (message) => {
-              console.log(message,'received message aaaa')
+          await channel.assertQueue("subscribed_queue", {durable:false})
+          channel.consume("subscribed_queue", (message) => {
+              console.log(message,'received message in subscribed queue')
               channel.ack(message);
           })
     } catch (error) {
