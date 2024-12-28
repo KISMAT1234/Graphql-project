@@ -1,6 +1,16 @@
 import { gql } from 'apollo-server-express';
 
 export const doctorType = gql`
+
+    enum Extension {
+        jpg
+        png
+        gif
+        svg
+        jpeg
+        heic
+    }
+
     type Doctor {
         id:ID!
         doctorname:String!
@@ -15,6 +25,11 @@ export const doctorType = gql`
         image:String
     }
 
+    input ImageInput {
+       base64: String!
+       extension: Extension!
+    }
+
     input DoctorDetails{
         doctorname:String!
         doctorEmail:String!
@@ -25,7 +40,7 @@ export const doctorType = gql`
         speciality:String
         education:String
         address:String
-        image:String
+        image:ImageInput
     }
 
     type DoctorResponse{
